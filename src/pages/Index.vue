@@ -57,14 +57,17 @@ export default class PageIndex extends Vue {
 
   nombre=null;
 
-  empezar(){
-    (this.$refs["form-datos"] as QForm).validate().then( valido =>{
-      if(valido){
-        this.$router.push({ path: '/juego', query: {
-          forma: this.forma.value,
-          vidaDeOracion: this.vidaDeOracion.value,
-          nombre: this.nombre
-        } })
+  empezar () {
+    (this.$refs['form-datos'] as QForm).validate().then(valido => {
+      if (valido) {
+        this.$router.push({
+          path: '/juego',
+          query: {
+            forma: this.forma.value,
+            vidaDeOracion: this.vidaDeOracion.value,
+            nombre: this.nombre
+          }
+        })
       }
     })
   }

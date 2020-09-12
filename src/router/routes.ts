@@ -13,9 +13,9 @@ const routes: RouteConfig[] = [
           nombre: route.query.nombre,
           forma: route.query.forma,
           vidaDeOracion: route.query.vidaDeOracion,
-          historial: route.query.historial || [],
+          historial: route.query.historial || []
         })
-        
+
       }
     ]
   },
