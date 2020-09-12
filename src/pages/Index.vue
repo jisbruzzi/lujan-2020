@@ -64,7 +64,6 @@ export default class PageIndex extends Vue {
           forma: this.forma.value,
           vidaDeOracion: this.vidaDeOracion.value,
           nombre: this.nombre
-
         } })
       }
     })
