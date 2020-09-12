@@ -1,0 +1,64 @@
+{
+    "0":{
+        "titulo":"Inicia la peregrinación",
+        "descripcion":"No sé bien qué estoy haciendo pero lo estoy haciendo. Mi nombre es {{nombre}} y soy genial.",
+        "opciones":[
+            {
+                "id":1,
+                "descripcion":"Ir adelante del grupo con {{p1}}"
+            },
+            {
+                "id":2,
+                "descripcion":"Quedarme atrás de todo con {{p2}}"
+            }
+        ]
+    },
+    "1":{
+        "titulo":"La charla con {{p1}}",
+        "descripcion":"Arrancamos con todo, conversando con {{p1}} sobre dietas y ejercicio. Vamos re bien.",
+        "opciones":[
+            {
+                "id":3,
+                "descripcion":"Hablar con {{p1}} sobre sillones."
+            },
+            {
+                "id":4,
+                "descripcion":"Irme atrás de todo con {{p2}}"
+            },
+            {
+                "id":5,
+                "descripcion":"{{p1}}, ¿qué pensás de {{p3}}?"
+            }
+        ]
+    },
+    "2":{
+        "titulo":"La charla con {{p2}}",
+        "descripcion":"La conversación con {{p2}} es interesante, pero preferirías rezar un rato",
+        "opciones":[
+            {
+                "id":3,
+                "descripcion":"Hablar con {{p1}} sobre sillones."
+            },
+            {
+                "id":4,
+                "descripcion":"Irme atrás de todo con {{p2}}"
+            },
+            {
+                "id":5,
+                "descripcion":"{{p2}}, ¿qué pensás de {{p3}}?"
+            }
+        ]
+    },
+    "3":{
+        "titulo":"Llegamos a  San Luis",
+        "descripcion":"San Luis es un lindo lugar."
+    },
+    "4":{
+        "titulo":"Llegamos a  San Luis",
+        "descripcion":"San Luis es un lindo lugar."
+    },
+    "5":{
+        "titulo":"Llegamos a  San Luis",
+        "descripcion":"San Luis es un lindo lugar."
+    }
+}
