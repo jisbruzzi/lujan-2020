@@ -1,48 +1,73 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+    <div>
+      <h2>Vamos a Luján</h2>
+      <q-form class="q-gutter-md" ref="form-datos">
+        <q-input
+          v-model="nombre"
+          label="Tu nombre"
+          :rules="[ val => (val && val.length>0) || 'Escribí tu nombre']"
+        />
+        <q-select
+          v-model="forma"
+          :options="opcionesForma"
+          label="Forma física"
+          :rules="[ val => val || 'Elegí una opción']"
+        />
+        <q-select
+          v-model="vidaDeOracion"
+          :options="opcionesVidaDeOracion"
+          label="Vida de oración"
+          :rules="[ val => val || 'Elegí una opción']"
+        />
+      <div>
+        <q-btn label="empezar" color="primary" @click="empezar"/>
+      </div>
+      </q-form>
+    </div>
   </q-page>
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models'
-import ExampleComponent from 'components/ClassComponent.vue'
 import { Vue, Component } from 'vue-property-decorator'
+import { QForm } from 'quasar'
 
 @Component({
-  components: { ExampleComponent }
 })
 export default class PageIndex extends Vue {
-  todos: Todo[] = [
-    {
-      id: 1,
-      content: 'ct1'
-    },
-    {
-      id: 2,
-      content: 'ct2'
-    },
-    {
-      id: 3,
-      content: 'ct3'
-    },
-    {
-      id: 4,
-      content: 'ct4'
-    },
-    {
-      id: 5,
-      content: 'ct5'
-    }
-  ];
+  forma=null
+  get opcionesForma () {
+    return [
+      { label: 'Muy buena forma', value: 1 },
+      { label: 'Camino bastante', value: 2 },
+      { label: 'Cristiano de sillón', value: 3 }
+    ]
+  }
 
-  meta: Meta = {
-    totalCount: 1200
-  };
+  vidaDeOracion=null
+
+  get opcionesVidaDeOracion () {
+    return [
+      { label: 'Comunión diaria', value: 1 },
+      { label: 'Rezo todos los días', value: 2 },
+      { label: 'Sólo misa', value: 2 },
+      { label: 'Cada tanto rezo', value: 3 }
+    ]
+  }
+
+  nombre=null;
+
+  empezar(){
+    (this.$refs["form-datos"] as QForm).validate().then( valido =>{
+      if(valido){
+        this.$router.push({ path: '/juego', query: {
+          forma: this.forma.value,
+          vidaDeOracion: this.vidaDeOracion.value,
+          nombre: this.nombre
+
+        } })
+      }
+    })
+  }
 }
 </script>
