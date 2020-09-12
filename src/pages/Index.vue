@@ -32,11 +32,16 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { QForm } from 'quasar'
 
+type SelectType = {
+  label:string,
+  value:number
+}
+
 @Component({
 })
 export default class PageIndex extends Vue {
-  forma=null
-  get opcionesForma () {
+  forma:SelectType|null=null
+  get opcionesForma ():Array<SelectType> {
     return [
       { label: 'Muy buena forma', value: 1 },
       { label: 'Camino bastante', value: 2 },
@@ -44,9 +49,9 @@ export default class PageIndex extends Vue {
     ]
   }
 
-  vidaDeOracion=null
+  vidaDeOracion:SelectType|null=null
 
-  get opcionesVidaDeOracion () {
+  get opcionesVidaDeOracion ():Array<SelectType> {
     return [
       { label: 'Comunión diaria', value: 1 },
       { label: 'Rezo todos los días', value: 2 },
@@ -55,21 +60,18 @@ export default class PageIndex extends Vue {
     ]
   }
 
-  nombre=null;
+  nombre:string|null=null;
 
-  empezar () {
-    (this.$refs['form-datos'] as QForm).validate().then(valido => {
-      if (valido) {
-        this.$router.push({
-          path: '/juego',
-          query: {
-            forma: this.forma.value,
-            vidaDeOracion: this.vidaDeOracion.value,
-            nombre: this.nombre
-          }
-        })
-      }
-    })
+  async empezar () {
+    const valido = await (this.$refs['form-datos'] as QForm).validate()
+    const query = {
+      forma: this.forma?.value?.toString() || null,
+      vidaDeOracion: this.vidaDeOracion?.value?.toString() || null,
+      nombre: this.nombre
+    }
+    if (valido) {
+      await this.$router.push({ path: '/juego', query })
+    }
   }
 }
 </script>
