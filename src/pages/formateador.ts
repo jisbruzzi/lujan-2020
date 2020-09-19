@@ -1,21 +1,32 @@
 import personasReal from './personas.json'
+import bienaventuranzas from './bienaventuranzas.json'
 const personas:Array<string> = personasReal
-function persona (n:number, seed:string):string {
+function seedeado<T> (a:Array<T>, seed:string, offset = 0):T {
   let seedTotal = 0
   for (let index = 0; index < seed.length; index++) {
     seedTotal += seed.charCodeAt(index)
   }
-  const nDefinitivo = (seedTotal + n) % personas.length
-  return personas[nDefinitivo]
+  const nDefinitivo = (seedTotal + offset) % a.length
+  return a[nDefinitivo]
+}
+function bienaventuranza (seed:string):string {
+  return seedeado(bienaventuranzas, seed, 0)
+}
+function persona (n:number, seed:string):string {
+  return seedeado(personas, seed, n)
 }
 function formatear (texto:string, miNombre:string):string {
+  const r = new RegExp('{{p([0-9]+)}}', 'g')
+  let match:RegExpExecArray|null = null
+  let result = texto
+  while ((match = r.exec(texto)) != null) {
+    const n:number = parseInt(match[1])
+    result = result.replace(`{{p${n}}}`, persona(n, miNombre))
+  }
   console.log(texto)
-  return texto
-    .replace('{{p1}}', persona(1, miNombre))
-    .replace('{{p2}}', persona(2, miNombre))
-    .replace('{{p3}}', persona(3, miNombre))
-    .replace('{{p4}}', persona(4, miNombre))
-    .replace('{{nombre}}', miNombre)
+  return result
+    .replace(/{{nombre}}/g, miNombre)
+    .replace(/{{bienaventuranza}}/g, bienaventuranza(miNombre))
 }
 
 export { formatear }

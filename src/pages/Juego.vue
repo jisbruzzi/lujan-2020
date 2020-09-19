@@ -8,7 +8,7 @@
         v-ripple
         v-for="opcion in opciones"
         :key="JSON.stringify(opcion)"
-        @click.native="elegirOpcion(opcion.id)"
+        @click.native="elegirOpcion(opcion.id,opcion.accion)"
         >
           <q-item-section v-html="opcion.descripcion"></q-item-section>
       </q-item>
@@ -22,7 +22,9 @@ import textosReal from './textos.json'
 import { formatear } from './formateador'
 type OpcionType={
   id:string,
-  descripcion:string
+  descripcion:string,
+  accion?:string,
+  condiciones?:Array<string>
 }
 type TextosType={
   [id:string]:{
@@ -35,6 +37,7 @@ const textos:TextosType = textosReal
 @Component({
 })
 export default class Juego extends Vue {
+  @Prop() estado!: Record<string, boolean>;
   get id ():string {
     return this.historial[0] || '0'
   }
@@ -49,9 +52,12 @@ export default class Juego extends Vue {
 
   get opciones () {
     const opciones = textos[this.id].opciones
-    return (opciones || []).map((o:OpcionType) => ({
+    return (opciones || []).filter((o:OpcionType) => {
+      return o.condiciones?.every(c => Object.keys(this.estado).includes(c)) || (!o.condiciones)
+    }).map((o:OpcionType) => ({
       id: o.id,
-      descripcion: formatear(o.descripcion, this.nombre)
+      descripcion: formatear(o.descripcion, this.nombre),
+      accion: o.accion
     }))
   }
 
@@ -63,16 +69,25 @@ export default class Juego extends Vue {
 
   @Prop() historial!:Array<string>;
 
-  async elegirOpcion (id:string) {
+  async elegirOpcion (id:string, accion:string|undefined) {
     await this.$router.push({
       path: '/juego',
       query: {
         forma: `${this.forma}`,
         vidaDeOracion: `${this.vidaDeOracion}`,
         nombre: this.nombre,
-        historial: [id, ...this.historial]
+        historial: [id, ...this.historial],
+        estado: this.siguienteEstado(accion)
       }
     })
+  }
+
+  siguienteEstado (accion: string|undefined): string|(string|null)[]|null|undefined {
+    const estado:Record<string, boolean> = this.estado
+    if (accion) {
+      estado[accion] = true
+    }
+    return JSON.stringify(estado)
   }
 }
 </script>

@@ -9,12 +9,16 @@ const routes: RouteConfig[] = [
       {
         path: 'juego',
         component: () => import('pages/Juego.vue'),
-        props: route => ({
-          nombre: route.query.nombre,
-          forma: route.query.forma,
-          vidaDeOracion: route.query.vidaDeOracion,
-          historial: route.query.historial || []
-        })
+        props: route => {
+          const estado = route.query.estado?.toString() || '{}'
+          return {
+            nombre: route.query.nombre,
+            forma: route.query.forma,
+            vidaDeOracion: route.query.vidaDeOracion,
+            historial: route.query.historial || [],
+            estado: (JSON.parse(estado) as Record<string, boolean>) || {}
+          }
+        }
 
       }
     ]

@@ -1,6 +1,6 @@
 {
     "0":{
-        "titulo":"Tu casa",
+        "titulo":"Suena el despertador",
         "descripcion":"¡Buen día! son las 7 am, dormiste mal por los nervios. Tenés mensajes de whatsapp de {{p1}} y {{p2}}, que están muy ansiosos. ¡Llegó el día!",
         "opciones":[
             {
@@ -19,7 +19,7 @@
     },
     "1":{
         "titulo":"Liniers",
-        "descripcion":"<p>Todo el mundo se pregunta dónde está {{nombre}}: ya es la hora de salir, y {{nombre}} no está. Llegás corriendo, seguro te olvidaste algo.</p><p> {{p4}}, que está de apoyo, te alcanza un papel que dice</p><p> {{bienaventuranza}}</p><p>¿Será que {{p4}} la eligió para vos? No podría ser más justa</p><p>Del otro lado, dice por quién debés rezar durante la peregrinación: </p> <p>{{p5}}.</p><p> Luego de 10 minutos de insistir, logramos sacarnos una foto grupal y salir a caminar.</p>",
+        "descripcion":"<p>Todo el mundo se pregunta dónde está {{nombre}}: ya es la hora de salir, y {{nombre}} no está. Llegás corriendo, seguro te olvidaste algo.</p><p> {{p4}}, que está de apoyo, te alcanza un papel que dice</p><p> <i>{{bienaventuranza}}</i></p><p>¿Será que {{p4}} la eligió para vos? No podría ser más justa</p><p>Del otro lado, dice por quién debés rezar durante la peregrinación: </p> <p><i>{{p5}}</i>.</p><p> Luego de 10 minutos de insistir, logramos sacarnos una foto grupal y salir a caminar.</p>",
         "opciones":[
             {
                 "id":"5",
@@ -99,7 +99,7 @@
     },
     "4":{
         "titulo":"Liniers",
-        "descripcion":"<p>Llegaste temprano, todo está listo para tener una pregrinación muy linda. Encontrás a {{p1}} charlando con {{p8}}}. Está soleado pero {{p8}} te dice que puede llover más a la noche. No seas pesimista, {{p8}}.</p><p> {{p4}}, que está de apoyo, te alcanza un papel que dice</p><p> {{bienaventuranza}} </p><p>¿Será que {{p4}} la eligió para vos? No podría ser más justa.</p><p> Del otro lado del papel dice por quién debés rezar durante la peregrinación:</p><p>{{p5}}.</p><p> Luego de 10 minutos de insistir, logramos sacarnos una foto grupal y salir a caminar.</p>",
+        "descripcion":"<p>Llegaste temprano, todo está listo para tener una pregrinación muy linda. Encontrás a {{p1}} charlando con {{p8}}. Está soleado pero {{p8}} te dice que puede llover más a la noche. No seas pesimista, {{p8}}.</p><p> {{p4}}, que está de apoyo, te alcanza un papel que dice</p><p> <i>{{bienaventuranza}}</i> </p><p>¿Será que {{p4}} la eligió para vos? No podría ser más justa.</p><p> Del otro lado del papel dice por quién debés rezar durante la peregrinación:</p><p><i>{{p5}}</i>.</p><p> Luego de 10 minutos de insistir, logramos sacarnos una foto grupal y salir a caminar.</p>",
         "opciones":[
             {
                 "id":"5",
