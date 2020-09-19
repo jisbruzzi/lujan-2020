@@ -1,19 +1,19 @@
 <template>
   <q-page class="column items-center justify-evenly">
     <h3>{{titulo}}</h3>
-    <p>{{contenido}}</p>
+    <div v-html="contenido"></div>
     <q-list bordered separator>
       <q-item
         clickable
         v-ripple
         v-for="opcion in opciones"
-        :key="opcion.id"
+        :key="JSON.stringify(opcion)"
         @click.native="elegirOpcion(opcion.id)"
         >
-          <q-item-section>{{opcion.descripcion}}</q-item-section>
+          <q-item-section v-html="opcion.descripcion"></q-item-section>
       </q-item>
     </q-list>
-  <q-page>
+  </q-page>
 </template>
 
 <script lang="ts">
@@ -21,7 +21,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import textosReal from './textos.json'
 import { formatear } from './formateador'
 type OpcionType={
-  id:number,
+  id:string,
   descripcion:string
 }
 type TextosType={

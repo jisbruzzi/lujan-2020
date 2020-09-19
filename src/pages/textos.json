@@ -1,64 +1,104 @@
 {
     "0":{
-        "titulo":"Inicia la peregrinación",
-        "descripcion":"No sé bien qué estoy haciendo pero lo estoy haciendo. Mi nombre es {{nombre}} y soy genial.",
+        "titulo":"Tu casa",
+        "descripcion":"¡Buen día! son las 7 am, dormiste mal por los nervios. Tenés mensajes de whatsapp de {{p1}} y {{p2}}, que están muy ansiosos. ¡Llegó el día!",
         "opciones":[
             {
-                "id":1,
-                "descripcion":"Ir adelante del grupo con {{p1}}"
+                "id":"1",
+                "descripcion":"¡Es re temprano! Va a ser un día largo así que voy a quedarme en la cama un ratito más."
             },
             {
-                "id":2,
-                "descripcion":"Quedarme atrás de todo con {{p2}}"
+                "id":"2",
+                "descripcion":"¡¡¡¡¿Ya son las 7?!!!!! ¡¡Es re tarde!! Me levanto ya mismo."
+            },
+            {
+                "id":"3",
+                "descripcion":"Le respondo a {{p1}} y {{p2}}, llamo a {{p3}} y arranco tranqui..."
             }
         ]
     },
     "1":{
-        "titulo":"La charla con {{p1}}",
-        "descripcion":"Arrancamos con todo, conversando con {{p1}} sobre dietas y ejercicio. Vamos re bien.",
+        "titulo":"Liniers",
+        "descripcion":"<p>Todo el mundo se pregunta dónde está {{nombre}}: ya es la hora de salir, y {{nombre}} no está. Llegás corriendo, seguro te olvidaste algo.</p><p> {{p4}}, que está de apoyo, te alcanza un papel que dice</p><p> {{bienaventuranza}}</p><p>¿Será que {{p4}} la eligió para vos? No podría ser más justa</p><p>Del otro lado, dice por quién debés rezar durante la peregrinación: </p> <p>{{p5}}.</p><p> Luego de 10 minutos de insistir, logramos sacarnos una foto grupal y salir a caminar.</p>",
         "opciones":[
             {
-                "id":3,
-                "descripcion":"Hablar con {{p1}} sobre sillones."
-            },
-            {
-                "id":4,
-                "descripcion":"Irme atrás de todo con {{p2}}"
-            },
-            {
-                "id":5,
-                "descripcion":"{{p1}}, ¿qué pensás de {{p3}}?"
+                "id":"5",
+                "descripcion":"¡Luján, allá vamos!"
             }
         ]
     },
     "2":{
-        "titulo":"La charla con {{p2}}",
-        "descripcion":"La conversación con {{p2}} es interesante, pero preferirías rezar un rato",
+        "titulo":"Preparando lo que llevo",
+        "descripcion":"No te vas a olvidar absolutamente nada.",
         "opciones":[
             {
-                "id":3,
-                "descripcion":"Hablar con {{p1}} sobre sillones."
+                "id":"2",
+                "descripcion":"Agarrar una botella de agua"
             },
             {
-                "id":4,
-                "descripcion":"Irme atrás de todo con {{p2}}"
+                "id":"2",
+                "descripcion":"Agarrar un gorro"
             },
             {
-                "id":5,
-                "descripcion":"{{p2}}, ¿qué pensás de {{p3}}?"
+                "id":"2",
+                "descripcion":"Agarrar fruta seca"
+            },
+            {
+                "id":"2",
+                "descripcion":"Tomar un mate"
+            },
+            {
+                "id":"2",
+                "descripcion":"Agarrar una estampita"
+            },
+            {
+                "id":"2",
+                "descripcion":"Agarrar una banana"
+            },
+            {
+                "id":"3",
+                "descripcion":"Creo que ya agarré todo lo que necesitaba."
             }
         ]
     },
     "3":{
-        "titulo":"Llegamos a  San Luis",
-        "descripcion":"San Luis es un lindo lugar."
+        "titulo":"Algo más",
+        "descripcion":"Ya casi terminaste los preparativos y estás a punto de salir pero te acordás de algo más, sólo podés elegir uno:",
+        "opciones":[
+            {
+                "id":"4",
+                "descripcion":"Agarrar el rosario de la jornada."
+            },
+            {
+                "id":"4",
+                "descripcion":"Agarrar la estampita de Santo Domingo que te regaló {{p1}}."
+            },
+            {
+                "id":"4",
+                "descripcion":"Llevar la medalla que te regaló {{p2}}."
+            },
+            {
+                "id":"4",
+                "descripcion":"Llevar la cruz que te regaló {{p6}}."
+            },
+            {
+                "id":"4",
+                "descripcion":"Llevar el rosario que te regaló {{p7}}."
+            }
+        ]
     },
     "4":{
-        "titulo":"Llegamos a  San Luis",
-        "descripcion":"San Luis es un lindo lugar."
+        "titulo":"Liniers",
+        "descripcion":"<p>Llegaste temprano, todo está listo para tener una pregrinación muy linda. Encontrás a {{p1}} charlando con {{p8}}}. Está soleado pero {{p8}} te dice que puede llover más a la noche. No seas pesimista, {{p8}}.</p><p> {{p4}}, que está de apoyo, te alcanza un papel que dice</p><p> {{bienaventuranza}} </p><p>¿Será que {{p4}} la eligió para vos? No podría ser más justa.</p><p> Del otro lado del papel dice por quién debés rezar durante la peregrinación:</p><p>{{p5}}.</p><p> Luego de 10 minutos de insistir, logramos sacarnos una foto grupal y salir a caminar.</p>",
+        "opciones":[
+            {
+                "id":"5",
+                "descripcion":"¡Luján, allá vamos!"
+            }
+        ]
     },
     "5":{
-        "titulo":"Llegamos a  San Luis",
+        "titulo":"Salimos para Luján",
         "descripcion":"San Luis es un lindo lugar."
     }
 }
