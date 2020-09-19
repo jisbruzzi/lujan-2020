@@ -33,15 +33,18 @@
         "opciones":[
             {
                 "id":"2",
-                "descripcion":"Agarrar una botella de agua"
+                "descripcion":"Agarrar una botella de agua",
+                "accion":"agua"
             },
             {
                 "id":"2",
-                "descripcion":"Agarrar un gorro"
+                "descripcion":"Agarrar un gorro",
+                "accion":"gorro"
             },
             {
                 "id":"2",
-                "descripcion":"Agarrar fruta seca"
+                "descripcion":"Agarrar fruta seca",
+                "accion":"seca"
             },
             {
                 "id":"2",
@@ -49,11 +52,13 @@
             },
             {
                 "id":"2",
-                "descripcion":"Agarrar una estampita"
+                "descripcion":"Agarrar una estampita",
+                "accion":"estampita"
             },
             {
                 "id":"2",
-                "descripcion":"Agarrar una banana"
+                "descripcion":"Agarrar una banana",
+                "accion":"banana"
             },
             {
                 "id":"3",
@@ -67,23 +72,28 @@
         "opciones":[
             {
                 "id":"4",
-                "descripcion":"Agarrar el rosario de la jornada."
+                "descripcion":"Agarrar el rosario de la jornada.",
+                "accion":"rosario-jornadas"
             },
             {
                 "id":"4",
-                "descripcion":"Agarrar la estampita de Santo Domingo que te regaló {{p1}}."
+                "descripcion":"Agarrar la estampita de Santo Domingo que te regaló {{p1}}.",
+                "accion":"estampita-sd"
             },
             {
                 "id":"4",
-                "descripcion":"Llevar la medalla que te regaló {{p2}}."
+                "descripcion":"Llevar la medalla que te regaló {{p2}}.",
+                "accion":"medalla"
             },
             {
                 "id":"4",
-                "descripcion":"Llevar la cruz que te regaló {{p6}}."
+                "descripcion":"Llevar la cruz que te regaló {{p6}}.",
+                "accion":"cruz"
             },
             {
                 "id":"4",
-                "descripcion":"Llevar el rosario que te regaló {{p7}}."
+                "descripcion":"Llevar el rosario que te regaló {{p7}}.",
+                "accion":"rosario"
             }
         ]
     },
@@ -99,6 +109,199 @@
     },
     "5":{
         "titulo":"Salimos para Luján",
-        "descripcion":"San Luis es un lindo lugar."
+        "descripcion":"La gente está en un estado de euforia absoluto, mirás a tu alrededor y ves a {{p1}} haciendo un pequeño trote, {{p4}} trotando \"de costado\" y a {{p7}} bailando (si, ¡bailando!). Además ves a {{p8}}, {{p9}} y {{p10}} juntos conversando y haciendo un gesto \"gimnástico\" con los brazos. {{p2}} también está por acá.",
+        "opciones":[
+            {
+                "id":"6",
+                "descripcion":"Llegó la hora de bailar.",
+                "accion":"baile"
+            },{
+                "id":"7",
+                "descripcion":"Hacerle carrerita a {{p1}}.",
+                "accion":"carrerita"
+            },{
+                "id":"8",
+                "descripcion":"Conversar sobre el clima con {{p2}}.",
+                "condiciones":["medalla"]
+            },{
+                "id":"9",
+                "descripcion":"Mostrarle la medalla a {{p2}}.",
+                "condiciones":["medalla"]
+            },{
+                "id":"10",
+                "descripcion":"Hablar mal de los peregrinos con {{p6}}.",
+                "condiciones":["cruz"]
+            },{
+                "id":"11",
+                "descripcion":"Mostrarle la cruz a {{p6}}.",
+                "condiciones":["cruz"]
+            },{
+                "id":"12",
+                "descripcion":"Mostrarle el rosario a {{p7}}.",
+                "condiciones":["rosario"]
+            },{
+                "id":"13",
+                "descripcion":"Contarle secretos a {{p7}}.",
+                "condiciones":["rosario"]
+            }
+        ]
+    },
+    "6":{
+        "titulo":"Bailando con {{p7}}",
+        "descripcion":"<p>{{p7}} te dice \"tus pasos de baile son muy buenos, {{nombre}}!\", arrancás la peregrinación con todo, ¡qué lindo divertirse con los hermanos en la fe! Con tanto baile se te pasa volando el tiempo y llegás a Merlo bien arriba (pero un poquito más cansado).</p>",
+        "opciones":[
+            {
+                "id":"14",
+                "descripcion":"Ir al descanso"
+            }
+        ]
+    },
+    "7":{
+        "titulo":"Jugando a la mancha con {{p1}}",
+        "descripcion":"<p>Te la pasás corriendo y matandote de risa con {{p1}}, nadie entiende cómo vas a hacer para caminar los 60Km pero no te importa demasiado porque nadie puede detenerte, {{nombre}}; estás totalmente fuera de control.</p>",
+        "opciones":[
+            {
+                "id":"14",
+                "descripcion":"Ir al descanso"
+            }
+        ]
+    },
+    "8":{
+        "titulo":"Conversando con {{p2}}",
+        "descripcion":"<p>¿Vos decís que llueve?</p><p>Y, la verdad no creo</p><p>Fue largo pero finalmente llegaste a Merlo.</p>",
+        "opciones":[
+            {
+                "id":"14",
+                "descripcion":"Ir al descanso"
+            }
+        ]
+    },
+    "9":{
+        "titulo":"Conversando con {{p2}}",
+        "descripcion":"Cuando {{p2}} ve la medallita se pone a llorar: \"no sabés lo que me pasó en Abril, {{nombre}}\". El camino hasta Merlo fue dificil emocionalmente, pero profundo.",
+        "opciones":[
+            {
+                "id":"14",
+                "descripcion":"Ir al descanso"
+            }
+        ]
+    },
+    "10":{
+        "titulo":"Conversando con {{p6}}",
+        "descripcion":"La verdad que esta gente está totalmente fuera de clima, no sé qué hacen acá; deben venir por deporte. Uh menos mal que ya llegamos a Merlo, no doy más.",
+        "opciones":[
+            {
+                "id":"14",
+                "descripcion":"Ir al descanso"
+            }
+        ]
+    },
+    "11":{
+        "titulo":"Conversando con {{p6}}",
+        "descripcion":"{{p6}} ve la cruz y recuerdan cuando te la regaló. ¡Que buenos recuerdos! Llegamos a Merlo en seguida.",
+        "opciones":[
+            {
+                "id":"14",
+                "descripcion":"Ir al descanso"
+            }
+        ]
+    },
+    "12":{
+        "titulo":"Conversando con {{p7}}",
+        "descripcion":"{{p7}} ve el rosario y recuerdan cuando te lo regaló. ¡Que buenos recuerdos! Llegamos a Merlo en seguida.",
+        "opciones":[
+            {
+                "id":"14",
+                "descripcion":"Ir al descanso"
+            }
+        ]
+    },
+    "13":{
+        "titulo":"Conversando con {{p7}}",
+        "descripcion":"{{p7}} no puede creer nada de lo que le estás diciendo. ¿Con una cuchara? ¿en serio? No puede ser. La charla no tiene nada que ver con la Madre, pero bueno, igual llegás a Merlo.",
+        "opciones":[
+            {
+                "id":"14",
+                "descripcion":"Ir al descanso"
+            }
+        ]
+    },
+    "14":{
+        "titulo":"El descanso en Merlo",
+        "descripcion":"En Merlo te encontrás con {{p4}}, {{p11}} y {{p12}} que te ofrecen sanguchitos, masajes, de todo. ¡Gracias, chicos!",
+        "opciones":[
+            {
+                "id":"15",
+                "descripcion":"Pedirle un masaje a {{p4}}."
+            },
+            {
+                "id":"15",
+                "descripcion":"Sacarme las zapatillas."
+            },
+            {
+                "id":"15",
+                "descripcion":"Comer el sanguchito que me ofrece {{p11}}."
+            },
+            {
+                "id":"15",
+                "descripcion":"Comer la banana que me ofrece {{p12}}."
+            }
+        ]
+    },
+    "15":{
+        "titulo":"5 minutos",
+        "descripcion":"Chicos ya tenemos que ir saliendo, pasen todos por el baño, si alguno está muy cansado que se quede.",
+        "opciones":[
+            {
+                "id":"16",
+                "descripcion":"Estoy listo."
+            },
+            {
+                "id":"17",
+                "descripcion":"Esperame que paso por el baño."
+            },
+            {
+                "id":"18",
+                "descripcion":"Me quedo acá."
+            }
+        ]
+    },
+    "16":{
+        "titulo":"",
+        "descripcion":"¿Seguro que no querés pasar por el baño?",
+        "opciones":[
+            {
+                "id":"19",
+                "descripcion":"Si si, no tengo ganas."
+            },
+            {
+                "id":"17",
+                "descripcion":"Bueno paso por el baño."
+            }
+        ]
+    },
+    "18":{
+        "titulo":"Te quedaste en Merlo.",
+        "descripcion":"",
+        "opciones":[]
+    },
+    "19":{
+        "titulo":"",
+        "descripcion":"Mirá que es un trecho largo hasta el próximo baño",
+        "opciones":[
+            {
+                "id":"17",
+                "descripcion":"No importa, mi vejiga está preparada para esto."
+            },
+            {
+                "id":"17",
+                "descripcion":"Bueno, paso por el baño"
+            }
+        ]
+    },
+    "17":{
+        "titulo":"salimos para La Reja",
+        "descripcion":"<p>La euforia sube, la gente aplaude, \"Creo que llego, Mamá\" decís, mirando para el cielo y para Luján. Pero, ¿llegás? Todavía faltan muchos kilómetros.</p><p><b>POR FAVOR NO SALGAS SOLO, ESPERÁ A QUE EL QUE GUIA LA ACTIVIDAD TE LO INDIQUE: SALIMOS TODOS JUNTOS Y LLEGAMOS TODOS JUNTOS</b></p>",
+        "opciones":[]
     }
 }
