@@ -1,5 +1,5 @@
 <template>
-  <q-page class="column items-center justify-evenly">
+  <q-page class="column items-center justify-evenly q-ma-md">
     <h3>{{titulo}}</h3>
     <div v-html="contenido"></div>
     <q-list bordered separator>

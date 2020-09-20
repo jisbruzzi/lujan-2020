@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row items-center justify-evenly">
+  <q-page class="row items-center justify-evenly q-pa-md">
     <div>
       <h2>Vamos a Luján</h2>
       <q-form class="q-gutter-md" ref="form-datos">
