@@ -16,10 +16,15 @@ const routes: RouteConfig[] = [
             forma: route.query.forma,
             vidaDeOracion: route.query.vidaDeOracion,
             historial: route.query.historial || [],
-            estado: (JSON.parse(estado) as Record<string, boolean>) || {}
+            estado: (JSON.parse(estado) as Record<string, boolean|number>) || {},
+            decisiones: route.query.decisiones || []
           }
         }
-
+      },
+      {
+        path: '/resumen',
+        component: () => import('pages/Resumen.vue'),
+        props: route => ({ decisiones: route.query.decisiones })
       }
     ]
   },

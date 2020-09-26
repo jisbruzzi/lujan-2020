@@ -114,23 +114,21 @@
             {
                 "id":"6",
                 "descripcion":"Llegó la hora de bailar.",
-                "accion":"baile"
+                "accion":{ "oracion": 0, "energia":-2 }
             },{
                 "id":"7",
                 "descripcion":"Hacerle carrerita a {{p1}}.",
-                "accion":"carrerita"
+                "accion":{ "oracion": 0, "energia":-3 }
             },{
                 "id":"8",
-                "descripcion":"Conversar sobre el clima con {{p2}}.",
-                "condiciones":["medalla"]
+                "descripcion":"Conversar sobre el clima con {{p2}}."
             },{
                 "id":"9",
                 "descripcion":"Mostrarle la medalla a {{p2}}.",
                 "condiciones":["medalla"]
             },{
                 "id":"10",
-                "descripcion":"Hablar mal de los peregrinos con {{p6}}.",
-                "condiciones":["cruz"]
+                "descripcion":"Hablar mal de los peregrinos con {{p6}}."
             },{
                 "id":"11",
                 "descripcion":"Mostrarle la cruz a {{p6}}.",
@@ -141,8 +139,7 @@
                 "condiciones":["rosario"]
             },{
                 "id":"13",
-                "descripcion":"Contarle secretos a {{p7}}.",
-                "condiciones":["rosario"]
+                "descripcion":"Contarle secretos a {{p7}}."
             }
         ]
     },
@@ -283,7 +280,13 @@
     "18":{
         "titulo":"Te quedaste en Merlo.",
         "descripcion":"",
-        "opciones":[]
+        "opciones":[
+            {
+                "id":"25",
+                "descripcion":"Fin",
+                "accion":"fin"
+            }
+        ]
     },
     "19":{
         "titulo":"",
@@ -301,7 +304,136 @@
     },
     "17":{
         "titulo":"Salimos para La Reja",
-        "descripcion":"<p>La euforia sube, la gente aplaude, \"Creo que llego, Mamá\" decís, mirando para el cielo y para Luján. Pero, ¿llegás? Todavía faltan muchos kilómetros.</p><p><b>POR FAVOR NO SALGAS SOLO, ESPERÁ A QUE EL QUE GUIA LA ACTIVIDAD TE LO INDIQUE: SALIMOS TODOS JUNTOS Y LLEGAMOS TODOS JUNTOS</b></p>",
-        "opciones":[]
+        "descripcion":"<p>La euforia sube, la gente aplaude, \"Creo que llego, Mamá\" decís, mirando para el cielo y para Luján. Pero, ¿llegás? Todavía faltan muchos kilómetros.</p><p>En el siguiente tramo empezarás a sentir más el cansancio.</p><p><b>POR FAVOR NO SALGAS SOLO, ESPERÁ A QUE EL QUE GUIA LA ACTIVIDAD TE LO INDIQUE: SALIMOS TODOS JUNTOS Y LLEGAMOS TODOS JUNTOS</b></p>",
+        "opciones":[
+            {
+                "id":"20",
+                "descripcion":"Empezar"
+            }
+        ]
+    },
+    "20":{
+        "titulo":"Un rosario",
+        "descripcion":"Se anuncia por el megáfono que el MVG comenzará un rosario en comunidad 😮",
+        "opciones":[
+            {
+                "id":"21-carrito",
+                "descripcion":"Me sumo, de una",
+                "accion":{ "oracion": 3, "energia":-1 }
+            },
+            {
+                "id":"21-atras",
+                "descripcion":"Me voy atrás, cerca del estandarte, a charlar con {{p1}} que me tiene que contar algo. Más tarde rezo, total es temprano.",
+                "accion":{ "oracion": 0, "energia":-2 }
+            },
+            {
+                "id":"21-atras",
+                "descripcion":"Me alejo un poco del carrito y sigo el rosario en silencio, a mi ritmo, recordando ofrecerlo por {{p5}}.",
+                "accion":{ "oracion": 1, "energia":-1 }
+            }
+        ]
+    },
+    "21-carrito":{
+        "titulo":"Falta...¿poco?",
+        "descripcion":"Ya va anocheciendo. Como decidiste rezar el rosario en comunidad, te quedaste cerca del carrito, así que estás rodeado de gente del MVG que te acompaña: {{p2}}, {{p8}}, {{p9}} .. y muchos más. Le preguntás a {{p11}} y te dice que falta poco para llegar a La Reja. ¡Hace 1 hora que falta poco! 😫😫 Querés dejar de pensar en eso, entonces",
+        "opciones":[
+            {
+                "id":"22",
+                "descripcion":"Te separas del grupo y rezás otro rosario. Nunca está de más.",
+                "accion":{ "oracion": 1, "energia":-1 }
+            },
+            {
+                "id":"22",
+                "descripcion":"Hablás un rato con {{p2}}. Sabes que a María llegamos en comunidad.",
+                "accion":{ "oracion": 0, "energia":-2 }
+            },
+            {
+                "id":"22",
+                "descripcion":"Te apoderás del parlante del carrito y ponés Soda Estereo. 🎶 siempre seremos PRÓ FU GOS 🎶 LOS DOOOOOOS 🎶",
+                "accion":{ "oracion": -1, "energia":-3 }
+            },
+            {
+                "id":"22",
+                "descripcion":"Te acercás al carrito y te ofreces a ayudar a llevarlo.",
+                "accion":{ "oracion": 1, "energia":-5 }
+            }
+        ]
+    },
+    "21-atras":{
+        "titulo":"Falta...¿poco?",
+        "descripcion":"Ya va anocheciendo. Te quedaste bastante lejos del carrito, donde están {{p1}} y... {{p5}}. Preguntás y {{p4}} te dice que falta poco para llegar a La Reja. ¡Hace 1 hora que falta poco! 😫 Querés dejar de pensar en eso, entonces",
+        "opciones":[
+            {
+                "id":"22",
+                "descripcion":"Te separas del grupo y rezas otro rosario. Nunca está de más.",
+                "accion":{ "oracion": 1, "energia":-1 }
+            },
+            {
+                "id":"22",
+                "descripcion":"Hablás un rato con {{p1}}. Sabes que a María llegamos en comunidad.",
+                "accion":{ "oracion": 0, "energia":-2 }
+            },
+            {
+                "id":"22",
+                "descripcion":"Te distraes con las multitudes de otros grupos y sus banderas del Gauchito y Callejeros. Daddy Yankee y Daft Punk son más interesantes que Atenas y Pascua Joven. Está mal, ¡pero no tan mal!",
+                "accion":{ "oracion": -2, "energia":-1 }
+            }
+        ]
+    },
+    "22":{
+        "titulo":"La Reja",
+        "descripcion":"A unos 100 metros, divisás el estandarte del MVG y a los chicos de apoyo esperando a los peregrinos, saltando y cantando con alegría. Apenas llegas:",
+        "opciones":[
+            {
+                "id":"24",
+                "descripcion":"No dudás en buscar el primer pedazo de cartón sobre la parada para dejarte caer, con los pies hacia arriba.",
+                "accion":{ "energia":1 }
+            },
+            {
+                "id":"24",
+                "descripcion":"Corrés a hacer la fila del baño. Esencial, mi querido Watson.",
+                "accion":{ "energia":1 }
+            },
+            {
+                "id":"24",
+                "descripcion":"¡¿Alguien dijo sándwiches?!",
+                "accion":{ "energia":1 }
+            },
+            {
+                "id":"24",
+                "descripcion":"Hago la fila de los bolsos. Necesito buscar un abrigo para comenzar la técnica de la cebolla humana.",
+                "accion":{ "energia":1 }
+            },
+            {
+                "id":"24",
+                "descripcion":"Voy por mi primera de muchas bananas.",
+                "accion":{ "energia":1 }
+            },
+            {
+                "id":"23",
+                "descripcion":"Estoy demasiado cansado, me quedo acá.",
+                "accion":{ "energia":1 }
+            }
+        ]
+    },
+    "23":{
+        "titulo":"Te quedaste en La Reja",
+        "descripcion":"",
+        "opciones":[{
+            "id":"25",
+            "descripcion":"Fin",
+            "accion":"fin"
+        }]
+    },
+    "24":{
+        "titulo":"Salimos para General Rodriguez",
+        "descripcion":"<p>Ya no hay tanta euforia ni tanta energía. Se hizo de noche, empieza a hacer frío (pero no llueve).</p><p>En el siguiente tramo empezarás a sentir las consecuencias de algunas de tus acciones</p><p><b>POR FAVOR NO SALGAS SOLO, ESPERÁ A QUE EL QUE GUIA LA ACTIVIDAD TE LO INDIQUE: SALIMOS TODOS JUNTOS Y LLEGAMOS TODOS JUNTOS</b></p>",
+        "opciones":[
+            {
+                "id":"25",
+                "descripcion":"Empezar",
+                "accion":"fin"
+            }
+        ]
     }
 }

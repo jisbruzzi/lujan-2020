@@ -2,6 +2,7 @@
   <q-page class="row items-center justify-evenly q-pa-md">
     <div>
       <h2>Vamos a Luján</h2>
+      <p><i>Madre, abrazanos. Queremos seguir caminando.</i></p>
       <q-form class="q-gutter-md" ref="form-datos">
         <q-input
           v-model="nombre"
@@ -19,6 +20,12 @@
           :options="opcionesVidaDeOracion"
           label="Vida de oración"
           :rules="[ val => val || 'Elegí una opción']"
+        />
+        <q-input
+          v-model="intencion"
+          label="Intención"
+          hint="¿Por qué intención ofrecés la peregrinación?"
+          :rules="[ val => (val && val.length>0) || 'No olvides la intención']"
         />
       <div>
         <q-btn label="empezar" color="primary" @click="empezar"/>
@@ -40,6 +47,7 @@ type SelectType = {
 @Component({
 })
 export default class PageIndex extends Vue {
+  intencion:string|null=null
   forma:SelectType|null=null
   get opcionesForma ():Array<SelectType> {
     return [
@@ -55,8 +63,8 @@ export default class PageIndex extends Vue {
     return [
       { label: 'Comunión diaria', value: 1 },
       { label: 'Rezo todos los días', value: 2 },
-      { label: 'Sólo misa', value: 2 },
-      { label: 'Cada tanto rezo', value: 3 }
+      { label: 'Sólo misa', value: 3 },
+      { label: 'Cada tanto rezo', value: 4 }
     ]
   }
 

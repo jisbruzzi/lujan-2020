@@ -2,13 +2,36 @@
   <q-page class="column items-center justify-evenly q-ma-md">
     <h3>{{titulo}}</h3>
     <div v-html="contenido"></div>
+    <transition
+      appear
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+      :duration="8000"
+    >
+    <div class="full-width" v-if="mostrarEnergia">
+      <p>Energía física</p>
+      <q-linear-progress stripe size="10px" :value="energia" />
+    </div>
+    </transition>
+    <transition
+      appear
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+      :duration="8000"
+    >
+    <div class="full-width" v-if="mostrarOracion">
+      <p>Espiritualidad</p>
+      <q-linear-progress stripe size="10px" :value="oracion" />
+    </div>
+    </transition>
     <q-list bordered separator>
       <q-item
-        clickable
+        :clickable="opcion.habilitado"
+        :disable="!opcion.habilitado"
         v-ripple
         v-for="opcion in opciones"
         :key="JSON.stringify(opcion)"
-        @click.native="elegirOpcion(opcion.id,opcion.accion)"
+        @click="elegirOpcion(opcion.id,opcion.accion,opcion.descripcion)"
         >
           <q-item-section v-html="opcion.descripcion"></q-item-section>
       </q-item>
@@ -20,10 +43,14 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import textosReal from './textos.json'
 import { formatear } from './formateador'
-type OpcionType={
+interface CambioEstadoType {
+  energia?:number,
+  oracion?:number
+}
+interface OpcionType {
   id:string,
   descripcion:string,
-  accion?:string,
+  accion?:string|CambioEstadoType,
   condiciones?:Array<string>
 }
 type TextosType={
@@ -37,7 +64,7 @@ const textos:TextosType = textosReal
 @Component({
 })
 export default class Juego extends Vue {
-  @Prop() estado!: Record<string, boolean>;
+  @Prop() estado!: Record<string, boolean|number>;
   get id ():string {
     return this.historial[0] || '0'
   }
@@ -52,12 +79,11 @@ export default class Juego extends Vue {
 
   get opciones () {
     const opciones = textos[this.id].opciones
-    return (opciones || []).filter((o:OpcionType) => {
-      return o.condiciones?.every(c => Object.keys(this.estado).includes(c)) || (!o.condiciones)
-    }).map((o:OpcionType) => ({
+    return (opciones || []).map((o:OpcionType) => ({
       id: o.id,
       descripcion: formatear(o.descripcion, this.nombre),
-      accion: o.accion
+      accion: o.accion,
+      habilitado: o.condiciones?.every(c => Object.keys(this.estado).includes(c)) || (!o.condiciones)
     }))
   }
 
@@ -69,25 +95,64 @@ export default class Juego extends Vue {
 
   @Prop() historial!:Array<string>;
 
-  async elegirOpcion (id:string, accion:string|undefined) {
-    await this.$router.push({
-      path: '/juego',
-      query: {
-        forma: `${this.forma}`,
-        vidaDeOracion: `${this.vidaDeOracion}`,
-        nombre: this.nombre,
-        historial: [id, ...this.historial],
-        estado: this.siguienteEstado(accion)
+  @Prop() decisiones!:Array<string>;
+
+  async elegirOpcion (id:string, accion:string|undefined|CambioEstadoType, descripcion:string) {
+    if (accion === 'fin') {
+      await this.$router.push({
+        path: '/resumen',
+        query: {
+          decisiones: this.decisiones
+        }
+      })
+    } else {
+      let decisiones!:Array<string>
+      if (this.opciones.filter(o => o.habilitado).length > 1) {
+        decisiones = [...this.decisiones, descripcion]
+      } else {
+        decisiones = [...this.decisiones]
       }
-    })
+      await this.$router.push({
+        path: '/juego',
+        query: {
+          forma: `${this.forma}`,
+          vidaDeOracion: `${this.vidaDeOracion}`,
+          nombre: this.nombre,
+          historial: [id, ...this.historial],
+          estado: this.siguienteEstado(accion),
+          decisiones
+        }
+      })
+    }
   }
 
-  siguienteEstado (accion: string|undefined): string|(string|null)[]|null|undefined {
-    const estado:Record<string, boolean> = this.estado
+  siguienteEstado (accion: string|undefined|CambioEstadoType): string {
+    const estado:Record<string, boolean|number> = this.estado
     if (accion) {
-      estado[accion] = true
+      if (typeof accion === 'string') {
+        estado[accion] = true
+      } else {
+        estado.energia = +(estado.energia || 0) + (accion.energia || 0)
+        estado.oracion = +(estado.oracion || 0) + (accion.oracion || 0)
+      }
     }
     return JSON.stringify(estado)
+  }
+
+  get energia ():number {
+    return ((3 - this.forma) * 3 + 10 + (+this.estado.energia || 0)) / 19
+  }
+
+  get mostrarEnergia ():boolean {
+    return (this.estado.energia || 0) !== 0
+  }
+
+  get oracion ():number {
+    return ((4 - this.vidaDeOracion) + (+this.estado.oracion || 0)) / 25
+  }
+
+  get mostrarOracion ():boolean {
+    return (this.estado.oracion || 0) !== 0
   }
 }
 </script>
