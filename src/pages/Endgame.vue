@@ -3,7 +3,7 @@
     <h3>Tramo Rodriguez-Luján</h3>
     <div v-html="contenido"></div>
     <div class="full-width">
-      <p>Energía física</p>
+      <p>Fuerzas físicas</p>
       <q-linear-progress stripe size="10px" :value="energia" />
     </div>
     <div class="full-width">
@@ -54,7 +54,7 @@ export default class Endgame extends Vue {
   @Prop() mostrarTiempo!:boolean
   @Prop() distanciaLujan!:number
   @Prop() tiempoLlegada!:number
-  contenido:string=""
+  contenido = ''
 
   mounted () {
     this.contenido = fuerzas[Math.floor(fuerzas.length * Math.random())]
@@ -67,7 +67,7 @@ export default class Endgame extends Vue {
 
   get tiempoFaltante ():string {
     const segundosTotales = Math.floor((this.tiempoLlegada - this.datenow) / 1000)
-    if (segundosTotales <= 0){
+    if (segundosTotales <= 0) {
       return "ya te pueden pasar a buscar"
     }
     const minutos = Math.floor(segundosTotales / 60)

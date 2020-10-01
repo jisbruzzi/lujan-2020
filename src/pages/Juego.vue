@@ -9,7 +9,7 @@
       :duration="8000"
     >
     <div class="full-width" v-if="mostrarEnergia">
-      <p>Energía física</p>
+      <p>Fuerzas físicas</p>
       <q-linear-progress stripe size="10px" :value="energia" />
     </div>
     </transition>
