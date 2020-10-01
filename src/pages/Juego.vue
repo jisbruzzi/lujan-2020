@@ -42,7 +42,10 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import textosReal from './textos.json'
-import { formatear } from './formateador'
+import { formatear, ampollado } from './formateador'
+
+type CondicionType = string
+// 'medalla' | 'cruz' | 'rosario' | 'puede-caminar' | 'no-ampollado' | 'ampollado' | 'puede-bailar' | 'buen-humor' | 'excelente-humor'
 interface CambioEstadoType {
   energia?:number,
   oracion?:number
@@ -51,7 +54,7 @@ interface OpcionType {
   id:string,
   descripcion:string,
   accion?:string|CambioEstadoType,
-  condiciones?:Array<string>
+  condiciones?:Array<CondicionType>
 }
 type TextosType={
   [id:string]:{
@@ -60,6 +63,7 @@ type TextosType={
     opciones?:Array<OpcionType>
   }
 };
+
 const textos:TextosType = textosReal
 @Component({
 })
@@ -77,13 +81,34 @@ export default class Juego extends Vue {
     return formatear(textos[this.id].descripcion, this.nombre)
   }
 
+  get ampollado ():boolean {
+    if (ampollado(this.nombre)) {
+      return this.energia < 0.5
+    } else {
+      return this.energia < 0.25
+    }
+  }
+
+  cumple (condicion:CondicionType):boolean {
+    type CallableType = ()=>boolean
+    const conds = new Map<string, CallableType >([
+      ['puede-caminar', () => this.energia > 0],
+      ['no-ampollado', () => !this.ampollado],
+      ['ampollado', () => this.ampollado],
+      ['puede-bailar', () => this.energia > 0.6],
+      ['buen-humor', () => this.oracion > 0.1],
+      ['excelente-humor', () => this.oracion > 0.3]
+    ])
+    return Object.keys(this.estado).includes(condicion) || conds.get(condicion)?.call(this) || false
+  }
+
   get opciones () {
     const opciones = textos[this.id].opciones
     return (opciones || []).map((o:OpcionType) => ({
       id: o.id,
       descripcion: formatear(o.descripcion, this.nombre),
       accion: o.accion,
-      habilitado: o.condiciones?.every(c => Object.keys(this.estado).includes(c)) || (!o.condiciones)
+      habilitado: o.condiciones?.some(c => this.cumple(c)) || (!o.condiciones)
     }))
   }
 
@@ -103,6 +128,19 @@ export default class Juego extends Vue {
         path: '/resumen',
         query: {
           decisiones: this.decisiones
+        }
+      })
+    } else if (accion === 'endgame') {
+      await this.$router.push({
+        path: '/endgame',
+        query: {
+          decisiones: this.decisiones,
+          energia: this.energia.toString(),
+          oracion: this.oracion.toString(),
+          nombre: this.nombre,
+          distanciaLujan: (1).toString(),
+          mostrarTiempo: false.toString(),
+          tiempoLlegada: (Date.now() + 1000 * 60 * 5).toString() // 2 mins
         }
       })
     } else {

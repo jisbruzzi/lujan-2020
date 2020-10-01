@@ -387,27 +387,32 @@
             {
                 "id":"24",
                 "descripcion":"No dudás en buscar el primer pedazo de cartón sobre la parada para dejarte caer, con los pies hacia arriba.",
-                "accion":{ "energia":1 }
+                "accion":{ "energia":1 },
+                "condiciones":["puede-caminar"]
             },
             {
                 "id":"24",
                 "descripcion":"Corrés a hacer la fila del baño. Esencial, mi querido Watson.",
-                "accion":{ "energia":1 }
+                "accion":{ "energia":1 },
+                "condiciones":["puede-caminar"]
             },
             {
                 "id":"24",
                 "descripcion":"¡¿Alguien dijo sándwiches?!",
-                "accion":{ "energia":1 }
+                "accion":{ "energia":1 },
+                "condiciones":["puede-caminar"]
             },
             {
                 "id":"24",
                 "descripcion":"Hago la fila de los bolsos. Necesito buscar un abrigo para comenzar la técnica de la cebolla humana.",
-                "accion":{ "energia":1 }
+                "accion":{ "energia":1 },
+                "condiciones":["puede-caminar"]
             },
             {
                 "id":"24",
                 "descripcion":"Voy por mi primera de muchas bananas.",
-                "accion":{ "energia":1 }
+                "accion":{ "energia":1 },
+                "condiciones":["puede-caminar"]
             },
             {
                 "id":"23",
@@ -430,9 +435,320 @@
         "descripcion":"<p>Ya no hay tanta euforia ni tanta energía. Se hizo de noche, empieza a hacer frío (pero no llueve).</p><p>En el siguiente tramo empezarás a sentir las consecuencias de algunas de tus acciones</p><p><b>POR FAVOR NO SALGAS SOLO, ESPERÁ A QUE EL QUE GUIA LA ACTIVIDAD TE LO INDIQUE: SALIMOS TODOS JUNTOS Y LLEGAMOS TODOS JUNTOS</b></p>",
         "opciones":[
             {
-                "id":"25",
-                "descripcion":"Empezar",
+                "id":"25-bien",
+                "descripcion":"Empezar sin problemas",
+                "condiciones":["no-ampollado"],
+                "accion":{ "energia":-1 }
+                
+            },
+            {
+                "id":"25-mal",
+                "descripcion":"Empezar con un problemita",
+                "condiciones":["ampollado"],
+                "accion":{ "energia":-3 }
+            }
+        ]
+    },
+    "25-bien":{
+        "titulo":"Empezando sin problemas",
+        "descripcion":"<p>Llegar hasta acá no fue tan facil, pero seguimos bien. Pensando en lo bien que estás por no tener ampollas ni ningún tipo de problema, y ves a {{p13}} que está caminando medio raro. No puede ser, {{p13}}, ¡acabamos de salir de La Reja! ¿qué pasó?</p><p>Me ampollé recién ahora, y la ampolla es ENORME, {{nombre}} 😵.</p>",
+        "opciones":[
+            {
+                "id":"26-ignorar",
+                "descripcion":"Uh que bajón, ¡que te mejores, {{p13}}!. Te ponés auriculares y bailás mientras escuchás música y caminás, porque estás recontra bien, dejando a {{p13}} atrás.",
+                "condiciones":["puede-bailar"],
+                "accion":{"energia":-3}
+            },
+            {
+                "id":"26-ignorar",
+                "descripcion":"Ignorar a {{p13}}. Pero ponerte auris y escuchar evanescence o algo medio triste.",
+                "accion":{"energia":-1, "oracion":-1}
+            },
+            {
+                "id":"26-ignorar",
+                "descripcion":"¡Qué lástima! ¡que te mejores, {{p13}}! Te ponés auriculares y escuchás los misterios del rosario.",
+                "accion":{"energia":-1,"oracion":1}
+            },
+            {
+                "id":"26-hablar",
+                "descripcion":"Darle consejos lujanezcos a {{p13}}, porque la tenés re clara.",
+                "accion":{"energia":-1},
+                "condiciones":["buen-humor"]
+            },
+            {
+                "id":"26-hablar",
+                "descripcion":"Rezar un rosario con {{p13}}, para que se le vaya el dolor.",
+                "accion":{"energia":-1, "oracion":2},
+                "condiciones":["buen-humor"]
+            }
+        ]
+    },
+    "25-mal":{
+        "titulo":"Se escucha un ruidito",
+        "descripcion":"<p>Se te reventó la ampolla, era grande. Cada vez que ponés el pie en el piso, sentís que algo se clava en tu carne, como si se tratara de un cirujano indeciso que no sabe bien cómo operarte el pié, y olvidó la anestesia.</p><p>Ves a {{p13}} que también está caminando medio raro. ¿Tendrá ampollas?</p>",
+        "opciones":[
+            {
+                "id":"26-chiste",
+                "descripcion":"Contarle a {{p13}} un chiste de calidad lamentable que se te acaba de ocurrir, relacionado a un cirujano indeciso y tus pies.",
+                "condiciones":["buen-humor"],
+                "accion":{"energia":-1, "oracion":-2}
+            },
+            {
+                "id":"26-ignorar",
+                "descripcion":"Te ponés auriculares y bailás mientras escuchás música y caminás, porque estás recontra bien, dejando a {{p13}} atrás.",
+                "condiciones":["puede-bailar"],
+                "accion":{"energia":-3}
+            },
+            {
+                "id":"26-ignorar",
+                "descripcion":"Ponerte auris y escuchar evanescence o algo medio triste.",
+                "accion":{"energia":-1, "oracion":-1}
+            },
+            {
+                "id":"26-ignorar",
+                "descripcion":"Te ponés auriculares y escuchás los misterios del rosario.",
+                "accion":{"energia":-1,"oracion":1},
+                "condiciones":["buen-humor"]
+            },
+            {
+                "id":"26-hablar",
+                "descripcion":"Darle consejos lujanezcos a {{p13}}, porque la tenés re clara y parece que no entendió nada.",
+                "accion":{"energia":-1},
+                "condiciones":["buen-humor"]
+            },
+            {
+                "id":"26-hablar",
+                "descripcion":"Rezar un rosario con {{p13}}, para que se les vaya el dolor.",
+                "accion":{"energia":0, "oracion":2},
+                "condiciones":["buen-humor"]
+            }
+        ]
+    },
+    "26-chiste":{
+        "titulo":"Chiste a {{p13}}",
+        "descripcion":"<p>Cada vez que pongo el pié en el piso, siento que algo se clava en mi carne, como si se tratara de un cirujano indeciso que no sabe bien cómo operarme el pié, y olvidó la anestesia.</p><p>Estoy con muchas ampollas en los pies, {{nombre}}, la estoy pasando muy mal... ¿Por qué me tratás así?</p><p>{{p13}} se pone a llorar desconsoladamente, vos te ponés a pensar realmente qué era lo que estabas pensando cuando dijiste eso. Buscás con la vista a un sacerdote para que te confiese. En la corrección no tan fraterna de {{p13}}, te convenciste de que tenés un corazón de piedra y la necesidad de conversión que realmente tenés.</p><p>Desearías tener tanta carne viva dentro de tu pecho como tenés en la planta del pié.</p>",
+        "opciones":[
+            {
+                "id":"26-hablar",
+                "descripcion":"Remontar la relación con {{p13}} a toda costa.",
+                "condiciones":["buen-humor"],
+                "accion":{"energia":0,"oracion":1}
+            },
+            {
+                "id":"26-ignorar",
+                "descripcion":"Es imposible consolar a {{p13}}. La verdad no te importa tanto, sólo querés que esto termine.",
+                "accion":{"energia":-1}
+            }
+        ]
+    },
+    "26-hablar":{
+        "titulo":"Vamos a comprar algo",
+        "descripcion":"<p>Estás un rato conversando con {{p13}}, y te das cuenta un hombre con megáfono anuncia: ¡¡Gatorade, Agua mineral, fresca, fresca!!</p><p>Te adelantás para comprarle y lo primero que te dice es que Dios no existe. Excelente forma de venderle a un peregrino.</p>",
+        "opciones":[
+            {
+                "id":"27",
+                "descripcion":"Ignorarlo completamente y no comprarle. No sabés qué es lo correcto y estás demasiado cansado como para pensar.",
+                "accion":{"energia":-1}
+            },
+            {
+                "id":"27",
+                "descripcion":"Le comprás el gatorade, ignorando el comentario anterior.",
+                "accion":{"energia":1,"oracion":-1}
+            },
+            {
+                "id":"27-p13",
+                "descripcion":"Mirás a {{p13}}, haciendo un gesto de 'hablá vos'.",
+                "accion":{"energia":1,"oracion":2}
+            },
+            {
+                "id":"27-genial",
+                "descripcion":"Decir las palabras justas.",
+                "accion":{"energia":1,"oracion":2},
+                "condiciones":["excelente-humor"]
+            }
+        ]
+    },
+    "27-p13":{
+        "titulo":"Las palabras justas",
+        "descripcion":"{{p13}} les vuela la cabeza a vos y al vendedor.",
+        "opciones":[
+            {
+                "id":"27",
+                "descripcion":"Continuar"
+            }
+        ]
+    },
+    "27-genial":{
+        "titulo":"Las palabras justas",
+        "descripcion":"Con 3 palabras le volás la cabeza al vendedor, y además le comprás la gatorade.",
+        "opciones":[
+            {
+                "id":"27",
+                "descripcion":"Continuar"
+            }
+        ]
+    },
+    "26-ignorar":{
+        "titulo":"Comprar algo",
+        "descripcion":"<p>Estás en tu mundo y te das cuenta un hombre con megáfono anuncia: ¡¡Gatorade, Agua mineral, fresca, fresca!!</p><p>Te adelantás para comprarle y lo primero que te dice es que Dios no existe. Excelente forma de venderle a un peregrino.</p>",
+        "opciones":[
+            {
+                "id":"27",
+                "descripcion":"Ignorarlo completamente y no comprarle. No sabés qué es lo correcto y estás demasiado cansado como para pensar.",
+                "accion":{"energia":-1}
+            },
+            {
+                "id":"27",
+                "descripcion":"Le comprás el gatorade, ignorando el comentario anterior.",
+                "accion":{"energia":1,"oracion":-1}
+            },
+            {
+                "id":"27-genial",
+                "descripcion":"Decir las palabras justas.",
+                "accion":{"energia":1,"oracion":2},
+                "condiciones":["excelente-humor"]
+            }
+        ]
+    },
+    "27":{
+        "titulo":"Los efectos del cansancio",
+        "descripcion":"Ves a {{p7}}, {{p8}}, {{p9}} y {{p10}} llevando el carrito, a {{p2}} rezando un rosario con {{p3}}, y a {{p5}} charlando con {{p6}}. Ya casi se te terminó la gatorade, y {{p13}} se puso a hablar con Charly al fondo de la peregrinación. Hay poca iluminación, con lo cual están casi a oscuras. Hay un clima de oración muy fuerte.",
+        "opciones":[
+            {
+                "id":"28",
+                "descripcion":"Llevar el carrito reemplazando a {{p7}}, todavía tenés energía",
+                "accion":{"energia":-3,"oracion":1},
+                "condiciones":["puede-bailar"]
+            },
+            {
+                "id":"28",
+                "descripcion":"Sumarte al rosario de {{p2}} y {{p3}}",
+                "accion":{"energia":-1,"oracion":2},
+                "condiciones":["buen-humor"]
+            },
+            {
+                "id":"28",
+                "descripcion":"Conversar un rato con {{p5}} y {{p8}} sobre política internacional.",
+                "accion":{"energia":-1}
+            },
+            {
+                "id":"28",
+                "descripcion":"Proponerle a {{p5}} y {{p8}} rezar un rosario.",
+                "accion":{"energia":-1, "oracion":2},
+                "condiciones":["buen-humor"]
+            },
+            {
+                "id":"28",
+                "descripcion":"Rezar un rosario en soledad",
+                "accion":{"energia":-2, "oracion":1}
+            }
+        ]
+    },
+    "28":{
+        "titulo":"Llegamos a General Rodríguez",
+        "descripcion":"Lo lograste. Los chicos del apoyo te esperan con un montón de cosas: sopa, masajes, un portatil, e insumos médicos para resolver todo tipo de problemas. El cansancio, la oscuridad y el frío hacen que haya un aire de oración muy fuerte. Muchos se quedan acá. Capaz vos también.",
+        "opciones":[
+            {
+                "id":"29",
+                "descripcion":"Pedirle masajes a alguien (no ves bien si es {{p14}} o {{p15}}).",
+                "accion":{"energia":1,"oracion":1},
+                "condiciones":["puede-caminar"]
+            },
+            {
+                "id":"29",
+                "descripcion":"Pedirle una sopita a {{p16}}.",
+                "accion":{"energia":1,"oracion":1},
+                "condiciones":["puede-caminar"]
+            },
+            {
+                "id":"29",
+                "descripcion":"Hacerle masajes a los peregrinos",
+                "accion":{"energia":1,"oracion":3},
+                "condiciones":["puede-bailar"]
+            },
+            {
+                "id":"29",
+                "descripcion":"Manotear una banana.",
+                "accion":{"energia":1,"oracion":3},
+                "condiciones":["puede-caminar"]
+            },
+            {
+                "id":"29",
+                "descripcion":"Les pedís a los chicos que te curen las ampollas.",
+                "accion":{"energia":1,"oracion":3},
+                "condiciones":["ampollado"]
+            },
+            {
+                "id":"29",
+                "descripcion":"Pasar por el baño.",
+                "accion":{"energia":1,"oracion":3},
+                "condiciones":["puede-caminar"]
+            },
+            {
+                "id":"29-fin",
+                "descripcion":"Subirte al micro, el cansancio físico supera."
+            }
+        ]
+    },
+    "rodriguez-fin":{
+        "titulo": "Te quedaste en General Rodríguez",
+        "descripcion": "Lo diste todo",
+        "opciones":[
+            {
+                "id":"29",
+                "descripcion":"Finalizar.",
                 "accion":"fin"
+            }
+        ]
+    },
+    "29":{
+        "titulo": "¿Estás seguro?",
+        "descripcion": "<p>El tramo que viene es <b>muy pero muy largo</b>, el más largo hasta ahora. Es todo en la ruta, con lo cual es imposible pasarlos a buscar: si se quedan, se tienen que quedar ahí en el medio de la ruta esperando, hasta que termine la peregrinación y los pasemos a buscar. Si se quedan en Luján es todavía peor, porque está todo cortado y lleno de gente y es imposible. Es importante que el que esté dudando si puede llegar, se quede, porque si se llegan a tener que quedar en el camino, la van a pasar <b>MUY mal</b>, y NO LOS VAMOS A PODER PASAR A BUSCAR.</p>",
+        "opciones":[
+            {
+                "id":"30",
+                "descripcion":"Estoy bien",
+                "condiciones":["puede-caminar","excelente-humor"]
+            },
+            {
+                "id":"31",
+                "descripcion":"Estoy super bien, vamos",
+                "condiciones":["puede-bailar"]
+            },
+            {
+                "id":"rodriguez-fin",
+                "descripcion":"Bueno, está bien, me quedo."
+            }
+        ]
+    },
+    "30":{
+        "titulo": "No llegaste bien",
+        "descripcion": "Mirá, {{nombre}}, no llegaste bien. No creo que puedas llegar a Luján. La verdad va a estar muy complicado. ¿Entendiste que no te podemos pasar a buscar?",
+        "opciones":[
+            {
+                "id":"31",
+                "descripcion":"Si, lo entendí. Igual salgo. Llego.",
+                "condiciones":["puede-caminar","excelente-humor"]
+            },
+            {
+                "id":"rodriguez-fin",
+                "descripcion":"Bueno, está bien, me quedo."
+            }
+        ]
+    },
+    "31":{
+        "titulo": "A punto de salir",
+        "descripcion": "<p>Por favor, MIRÁ BIEN LAS BARRAS DE ESPIRITUALIDAD Y ENERGÍA. CUANDO LA BARRA DE ENERGIA LLEGUE A CERO, VAS A TENER QUE QUEDARTE. Preguntate, {{nombre}}: ¿llegás? ¿Podés afirmarlo con seguridad?</p><p><b>POR FAVOR NO SALGAS SOLO, ESPERÁ A QUE EL QUE GUIA LA ACTIVIDAD TE LO INDIQUE: SALIMOS TODOS JUNTOS Y LLEGAMOS TODOS JUNTOS</b></p>",
+        "opciones":[
+            {
+                "id":"31",
+                "descripcion":"Veo bien la barrita. Vamos.",
+                "condiciones":["puede-caminar","excelente-humor"],
+                "accion":"endgame"
+            },
+            {
+                "id":"rodriguez-fin",
+                "descripcion":"Bueno, está bien, me quedo."
             }
         ]
     }

@@ -25,6 +25,24 @@ const routes: RouteConfig[] = [
         path: '/resumen',
         component: () => import('pages/Resumen.vue'),
         props: route => ({ decisiones: route.query.decisiones })
+      },
+      {
+        path: '/lujan',
+        component: () => import('pages/Lujan.vue'),
+        props: route => ({ decisiones: route.query.decisiones })
+      },
+      {
+        path: '/endgame',
+        component: () => import('pages/Endgame.vue'),
+        props: route => ({
+          decisiones: route.query.decisiones,
+          energia: parseFloat(route.query.energia.toString()),
+          oracion: parseFloat(route.query.oracion.toString()),
+          nombre: route.query.nombre,
+          distanciaLujan: parseFloat(route.query.distanciaLujan.toString()),
+          mostrarTiempo: route.query.mostrarTiempo === 'true',
+          tiempoLlegada: parseFloat(route.query.tiempoLlegada.toString())
+        })
       }
     ]
   },

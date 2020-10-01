@@ -9,7 +9,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 @Component
 export default class Resumen extends Vue {
-    @Prop() decisiones!:Array<string>
+  @Prop() decisiones!:Array<string>
 }
 </script>
 

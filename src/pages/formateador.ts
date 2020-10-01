@@ -28,5 +28,7 @@ function formatear (texto:string, miNombre:string):string {
     .replace(/{{nombre}}/g, miNombre)
     .replace(/{{bienaventuranza}}/g, bienaventuranza(miNombre))
 }
-
-export { formatear }
+function ampollado (nombre:string) {
+  return seedeado([true, false], nombre)
+}
+export { formatear, ampollado }
