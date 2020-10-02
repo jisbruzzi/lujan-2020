@@ -29,7 +29,10 @@ const routes: RouteConfig[] = [
       {
         path: '/lujan',
         component: () => import('pages/Lujan.vue'),
-        props: route => ({ decisiones: route.query.decisiones })
+        props: route => ({
+          decisiones: route.query.decisiones,
+          caminando: route.query.caminando === 'true'
+        })
       },
       {
         path: '/endgame',

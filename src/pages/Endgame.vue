@@ -6,20 +6,22 @@
       :duration="duracionAnimacion"
       mode="out-in"
     >
-  <q-page class="column items-center justify-evenly q-ma-md" :key="contenido">
+  <q-page class="column items-center justify-evenly q-ma-md q-gutter-lg" :key="contenido">
     <h3>Tramo Rodriguez-Luján</h3>
     <div v-html="contenido" ></div>
-    <div class="full-width">
-      <p>Fuerzas físicas</p>
-      <q-linear-progress stripe size="10px" :value="energia" />
+    <div class="full-width row q-gutter-md">
+      <div class="col">
+        <p>Fuerzas físicas</p>
+        <q-linear-progress stripe size="10px" :value="energia" />
+      </div>
+      <div class="col">
+        <p>Espiritualidad</p>
+        <q-linear-progress stripe size="10px" :value="oracion" />
+      </div>
     </div>
-    <div class="full-width">
-      <p>Espiritualidad</p>
-      <q-linear-progress stripe size="10px" :value="oracion" />
-    </div>
-    <div class="full-width">
+    <div class="full-width col-auto">
       <p>Avance hasta Luján: vas {{((1-distanciaLujan)*kmsLujan).toFixed(1)}} km de {{kmsLujan.toFixed(1)}} km</p>
-      <q-linear-progress stripe size="10px" :value="distanciaLujan" />
+      <q-linear-progress stripe size="20px" :value="1-distanciaLujan" color="red" />
     </div>
     <transition
       appear
@@ -27,12 +29,12 @@
       leave-active-class="animated fadeOut"
       :duration="8000"
     >
-    <div class="full-width" v-if="mostrarTiempo">
+    <div class="full-width col-auto" v-if="mostrarTiempo">
       <p>Tiempo faltante para que puedan pasar a buscarte: {{tiempoFaltante}}</p>
-      <q-linear-progress stripe size="10px" :value="tiempoFaltantePorcentaje" />
+      <q-linear-progress stripe size="10px" :value="1-tiempoFaltantePorcentaje" color="yellow"/>
     </div>
     </transition>
-    <q-list bordered separator>
+    <q-list bordered separator class="col-auto">
       <q-item clickable v-ripple @click="meQuedo">
           <q-item-section>Me quedo acá</q-item-section>
       </q-item>
@@ -119,23 +121,25 @@ export default class Endgame extends Vue {
   async meQuedo () {
     if (this.tiempoFaltantePorcentaje <= 0) {
       await this.$router.push({
-        path: '/resumen',
+        path: '/lujan',
         query: {
-          decisiones: this.decisiones
+          decisiones: this.decisiones,
+          caminando: (false).toString()
         }
       })
     } else {
-      await this.avanzar('Me quedo', 0, 0, 0, true)
+      await this.avanzar('Me quedo', 0, 0, 0, true, 10000)
     }
   }
 
-  async avanzar (decision:string, dEnergia:number, dOracion:number, dLujan:number, mostrarTiempo:boolean) {
+  async avanzar (decision:string, dEnergia:number, dOracion:number, dLujan:number, mostrarTiempo:boolean, dTiempo = 0) {
     this.contenido = fuerzas[Math.floor(fuerzas.length * Math.random())]
     if (this.distanciaLujan + dLujan <= 0) {
       await this.$router.push({
         path: '/lujan',
         query: {
-          decisiones: [...this.decisiones, decision]
+          decisiones: [...this.decisiones, decision],
+          caminando: (true).toString()
         }
       })
     } else {
@@ -148,7 +152,7 @@ export default class Endgame extends Vue {
           nombre: this.nombre,
           distanciaLujan: (this.distanciaLujan + dLujan).toString(),
           mostrarTiempo: mostrarTiempo.toString(),
-          tiempoLlegada: this.tiempoLlegada.toString()
+          tiempoLlegada: (this.tiempoLlegada + dTiempo).toString()
         }
       })
     }
