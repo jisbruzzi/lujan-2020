@@ -1,7 +1,14 @@
 <template>
-  <q-page class="column items-center justify-evenly q-ma-md">
+<transition
+      appear
+      :enter-active-class="tipoAnimacionIn"
+      :leave-active-class="tipoAnimacionOut"
+      :duration="duracionAnimacion"
+      mode="out-in"
+    >
+  <q-page class="column items-center justify-evenly q-ma-md" :key="contenido">
     <h3>Tramo Rodriguez-Luján</h3>
-    <div v-html="contenido"></div>
+    <div v-html="contenido" ></div>
     <div class="full-width">
       <p>Fuerzas físicas</p>
       <q-linear-progress stripe size="10px" :value="energia" />
@@ -11,7 +18,7 @@
       <q-linear-progress stripe size="10px" :value="oracion" />
     </div>
     <div class="full-width">
-      <p>Distancia a Luján: {{distanciaLujan*19.4}} km</p>
+      <p>Avance hasta Luján: vas {{((1-distanciaLujan)*kmsLujan).toFixed(1)}} km de {{kmsLujan.toFixed(1)}} km</p>
       <q-linear-progress stripe size="10px" :value="distanciaLujan" />
     </div>
     <transition
@@ -40,6 +47,7 @@
       </q-item>
     </q-list>
   </q-page>
+</transition>
 </template>
 
 <script lang="ts">
@@ -64,6 +72,22 @@ export default class Endgame extends Vue {
   }
 
   datenow:number = Date.now()
+
+  get tipoAnimacionIn () {
+    return this.energia <= 0.01 ? 'animated headShake' : 'animated fadeIn'
+  }
+
+  get tipoAnimacionOut () {
+    return this.energia <= 0.01 ? 'animated headShake' : 'animated fadeOut'
+  }
+
+  get duracionAnimacion () {
+    return this.energia <= 0.01 ? 500 : 50
+  }
+
+  get kmsLujan () {
+    return 19.4 + (1 - this.tiempoFaltantePorcentaje) * 10
+  }
 
   get tiempoFaltante ():string {
     const segundosTotales = Math.floor((this.tiempoLlegada - this.datenow) / 1000)
