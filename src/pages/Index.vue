@@ -21,6 +21,7 @@
           label="Vida de oración"
           :rules="[ val => val || 'Elegí una opción']"
         />
+        <q-img src="/virgen.jpg" />
         <q-input
           v-model="intencion"
           label="Intención"

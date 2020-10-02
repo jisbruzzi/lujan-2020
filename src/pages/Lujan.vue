@@ -1,5 +1,5 @@
 <template>
-  <q-page class="column items-center justify-evenly q-ma-md">
+  <q-page class="column items-center justify-evenly q-ma-md q-gutter-md">
     <h3>¡Llegaste a Luján!</h3>
     <div v-if="caminando">
       <p>No tengo una explicación racional para esto.</p>
@@ -7,6 +7,7 @@
     <div v-else>
       <p>No llegaste a pié, pero llegaste, y mamá está contenta.</p>
     </div>
+    <q-img src="/llegada2019.jpg" />
     <q-list bordered separator>
       <q-item clickable v-ripple
         @click="resumen"
