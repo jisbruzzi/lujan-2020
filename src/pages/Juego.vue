@@ -1,7 +1,24 @@
 <template>
-  <q-page class="column items-center justify-evenly q-ma-md q-gutter-lg">
-    <h3>{{titulo}}</h3>
-    <div v-html="contenido"></div>
+
+  <q-page class="column items-center justify-evenly q-ma-md q-gutter-lg" >
+    <transition
+      appear
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+      mode="out-in"
+      :duration="250"
+    >
+      <h3 :key="historial.join(',')">{{titulo}}</h3>
+    </transition>
+    <transition
+      appear
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+      mode="out-in"
+      :duration="250"
+    >
+      <div v-html="contenido" :key="historial.join(',')"></div>
+    </transition>
     <transition
       appear
       enter-active-class="animated fadeIn"
@@ -24,19 +41,28 @@
       <q-linear-progress stripe size="10px" :value="oracion" />
     </div>
     </transition>
-    <q-list bordered separator>
-      <q-item
-        :clickable="opcion.habilitado"
-        :disable="!opcion.habilitado"
-        v-ripple
-        v-for="opcion in opciones"
-        :key="JSON.stringify(opcion)"
-        @click="elegirOpcion(opcion.id,opcion.accion,opcion.descripcion)"
-        >
-          <q-item-section v-html="opcion.descripcion"></q-item-section>
-      </q-item>
-    </q-list>
+    <transition
+      appear
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+      mode="out-in"
+      :duration="250"
+    >
+      <q-list bordered separator :key="historial.join(',')">
+        <q-item
+          :clickable="opcion.habilitado"
+          :disable="!opcion.habilitado"
+          v-ripple
+          v-for="opcion in opciones"
+          :key="JSON.stringify(opcion)"
+          @click="elegirOpcion(opcion.id,opcion.accion,opcion.descripcion)"
+          >
+            <q-item-section v-html="opcion.descripcion"></q-item-section>
+        </q-item>
+      </q-list>
+    </transition>
   </q-page>
+
 </template>
 
 <script lang="ts">
