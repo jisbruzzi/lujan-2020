@@ -1,55 +1,26 @@
 [
-    "vamos chicos!!",
-    "daleeeee",
-    "garra que ya falta poco!!",
-    "Bienaventurado eres, peregrino, si descubres que el camino te abre los ojos a lo que no se ve."
-    ,
-    "Bienaventurado eres, peregrino, si lo que más te preocupa no es llegar, sino llegar con los otros."
-    ,
-    "Bienaventurado eres, peregrino, cuando contemplas el camino y lo descubres lleno de nombres y de amaneceres."
-    ,
-    "Bienaventurado eres, peregrino, porque has descubierto que el auténtico camino comienza cuando se acaba."
-    ,
-    "Bienaventurado eres, peregrino, si tu mochila se va vaciando de cosas y tu corazón no sabe dónde colgar tantas emociones."
-    ,
-    "Bienaventurado eres, peregrino, si descubres que un paso atrás para ayudar a otro vale más que cien hacia delante sin mirar a tu lado."
-    ,
-    "Bienaventurado eres, peregrino, cuando te faltan palabras para agradecer todo lo que te sorprende en cada recodo del camino."
-    ,
-    "Bienaventurado eres, peregrino, si buscas la verdad y haces de tu camino una vida y de tu vida un camino, en busca de quien es el Camino, la Verdad y la Vida."
-    ,
-    "Bienaventurado eres, peregrino, si en el camino te encuentras contigo mismo y te regalas un tiempo sin prisas para no descuidar la imagen de tu corazón."
-    ,
-    "Bienaventurado eres, peregrino, si descubres que el camino tiene mucho de silencio; y el silencio, de oración; y la oración, de encuentro con el Padre que te espera."
-    ,
-    "Bienaventurados si vemos en ella el modelo de una persona plena y realizada."
-    ,
-    "Bienaventurados si la acogemos en el espacio más íntimo de nuestro ser."
-    ,
+    "Escuchás a {{p1}} gritar: ¡¡vamos chicos!!",
+    "daleeeee {{nombre}}, ¡¡¡dale {{p2}}!!!",
+    "{{p3}} grita: ¡¡garra que ya falta poco!!",
     "Síganme, y yo los haré pescadores de hombres. "
     ,
-    "Bienaventurado eres, peregrino, si descubres que el camino te abre los ojos a lo que no se ve."
-    ,
-    "Bienaventurado eres, peregrino, si lo que más te preocupa no es llegar, sino llegar con los otros."
-    ,
-    "Bienaventurado eres, peregrino, cuando contemplas el camino y lo descubres lleno de nombres y de amaneceres."
-    ,
-    "Bienaventurado eres, peregrino, porque has descubierto que el auténtico camino comienza cuando se acaba."
-    ,
-    "Bienaventurado eres, peregrino, si tu mochila se va vaciando de cosas y tu corazón no sabe dónde colgar tantas emociones."
-    ,
-    "Bienaventurado eres, peregrino, si descubres que un paso atrás para ayudar a otro vale más que cien hacia delante sin mirar a tu lado."
-    ,
-    "Felices los que ven especialmente lo bueno de los demás."
-    ,
-    "Felices los que saben ponerse en el lugar del otro."
-    ,
-    "Felices los que tienen la capacidad de abrazar."
-    ,
-    "Felices los que tienen la capacidad de perdonar." 
-    ,
-    "Felices aquellos que son capaces de ayudar a otros en su error."
-    ,
+    "La conversación con {{p4}} se puso re profunda",
+    "Ves correr a {{p5}}",
+    "¡¡Allá va {{p6}}!!",
+    "{{p7}} te propone rezar un rosario",
+    "No entendés cómo {{p8}} está llevando el carrito",
+    "{{p9}} te alcanza una botella de agua",
+    "Le das un trago de agua a {{p10}}",
+    "{{p11}} está como si recién hubiera salido de su casa",
+    "{{p12}} la está pasando un poco mal, así que le das charla",
+    "Ves que {{p13}} corre",
+    "{{p14}}, ¿estás bien?",
+    "{{p15}} te ofrece un chocolatito",
+    "{{p16}} se pone a gritar alabanzas porque no da más y no sabe qué hacer",
+    "Dale {{p17}} ¡¡¡¡vos podés!!!!",
+    "¡¡¡{{p18}} no pares!!!",
+    "{{p19}} te viene a alentar",
+
     "Vengan a mí todos los que están afligidos y agobiados, y yo los aliviaré. "
     ,
     "Bienaventurados los que tienen alma de pobres, porque de ellos es el Reino de los Cielos."
@@ -81,4 +52,4 @@
     "Bienaventurados los misericordiosos, porque ellos obtendrán misericordia."
     ,
     "Vengan a mí todos los que están afligidos y agobiados, y yo los aliviaré. "
-    ]
+]

@@ -55,6 +55,8 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import fuerzas from './fuerzas.json'
+import { formatear } from './formateador'
+
 @Component
 export default class Endgame extends Vue {
   @Prop() decisiones!:Array<string>
@@ -133,7 +135,7 @@ export default class Endgame extends Vue {
   }
 
   async avanzar (decision:string, dEnergia:number, dOracion:number, dLujan:number, mostrarTiempo:boolean, dTiempo = 0) {
-    this.contenido = fuerzas[Math.floor(fuerzas.length * Math.random())]
+    this.contenido = formatear(fuerzas[Math.floor(fuerzas.length * Math.random())], this.nombre)
     if (this.distanciaLujan + dLujan <= 0) {
       await this.$router.push({
         path: '/lujan',
