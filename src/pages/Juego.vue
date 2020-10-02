@@ -1,5 +1,5 @@
 <template>
-  <q-page class="column items-center justify-evenly q-ma-md">
+  <q-page class="column items-center justify-evenly q-ma-md q-gutter-lg">
     <h3>{{titulo}}</h3>
     <div v-html="contenido"></div>
     <transition

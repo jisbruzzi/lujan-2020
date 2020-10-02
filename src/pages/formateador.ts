@@ -13,7 +13,9 @@ function bienaventuranza (seed:string):string {
   return seedeado(bienaventuranzas, seed, 0)
 }
 function persona (n:number, seed:string):string {
-  return seedeado(personas, seed, n)
+  return seedeado(personas.filter((otro) => {
+    return !otro.toLowerCase().includes(seed.toLowerCase()) && !seed.toLowerCase().includes(otro.toLowerCase())
+  }), seed, n)
 }
 function formatear (texto:string, miNombre:string):string {
   const r = new RegExp('{{p([0-9]+)}}', 'g')
